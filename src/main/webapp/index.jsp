@@ -7,6 +7,6 @@
 <body>
 <h1><%= "Hello World!" %></h1>
 <br/>
-<a href="register-customer">Hello Servlet</a>
+<a href="user-register">Register</a>
 </body>
 </html>

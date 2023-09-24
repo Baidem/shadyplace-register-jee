@@ -22,9 +22,10 @@
         <property name="hbm2ddl.auto">update</property>
 
 
-        <mapping class="com.shadyplace.registerjee.models.Customer"/>
+        <mapping class="com.shadyplace.registerjee.models.User"/>
         <mapping class="com.shadyplace.registerjee.models.FamilyLink"/>
         <mapping class="com.shadyplace.registerjee.models.FidelityRank"/>
+        <mapping class="com.shadyplace.registerjee.models.Role"/>
 
 
     </session-factory>

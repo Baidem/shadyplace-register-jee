@@ -1,6 +1,6 @@
 package com.shadyplace.registerjee.services;
 
-import com.shadyplace.registerjee.models.Customer;
+import com.shadyplace.registerjee.models.User;
 import com.shadyplace.registerjee.utils.HibernateUtils;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -9,18 +9,21 @@ import org.mindrot.jbcrypt.BCrypt;
 
 import java.util.List;
 
-public class CustomerService {
+public class UserService {
 
 
-    public CustomerService() {
+    private RoleService roleService;
+
+    public UserService() {
+        this.roleService = new RoleService();
     }
 
-    public List<Customer> getCustomerByEmail(String email){
+    public List<User> getCustomerByEmail(String email){
         SessionFactory sf = HibernateUtils.getSessionFactory();
         Session session = sf.getCurrentSession();
         Transaction tx = session.beginTransaction();
 
-        List<Customer> customers = session.createQuery("FROM Customer c WHERE c.email = ?1", Customer.class)
+        List<User> customers = session.createQuery("FROM User c WHERE c.email = ?1", User.class)
                 .setParameter(1, email)
                 .getResultList();
 
@@ -30,15 +33,17 @@ public class CustomerService {
         return customers;
     }
 
-    public void registerCustomer(Customer customer){
+    public void registerCustomer(User user){
+        user.addRole(this.roleService.getRoleByName("USER"));
+
         SessionFactory sf = HibernateUtils.getSessionFactory();
         Session session = sf.getCurrentSession();
         Transaction tx = session.beginTransaction();
 
         // Hasher le mot de passe utilisateur
-        customer.setPassword(BCrypt.hashpw(customer.getPassword(), BCrypt.gensalt()));
+        user.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt()));
 
-        session.persist(customer);
+        session.persist(user);
 
         tx.commit();
         session.close();

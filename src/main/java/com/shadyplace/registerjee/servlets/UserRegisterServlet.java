@@ -1,9 +1,9 @@
 package com.shadyplace.registerjee.servlets;
 
-import com.shadyplace.registerjee.models.Customer;
+import com.shadyplace.registerjee.models.User;
 import com.shadyplace.registerjee.models.enums.Country;
 import com.shadyplace.registerjee.models.enums.FamilyLinkLabel;
-import com.shadyplace.registerjee.services.CustomerService;
+import com.shadyplace.registerjee.services.UserService;
 import com.shadyplace.registerjee.services.FamilyLinkService;
 import com.shadyplace.registerjee.services.FidelityRankService;
 import jakarta.servlet.ServletException;
@@ -22,11 +22,11 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Set;
 
-@WebServlet(name = "register-customer", value = "/register-customer")
-public class RegisterCustomerServlet extends HttpServlet {
+@WebServlet(name = "user-register", value = "/user-register")
+public class UserRegisterServlet extends HttpServlet {
 
     private Validator validator;
-    private CustomerService customerService;
+    private UserService userService;
     private FamilyLinkService familyLinkService;
     private FidelityRankService fidelityRankService;
 
@@ -35,7 +35,7 @@ public class RegisterCustomerServlet extends HttpServlet {
     public void init() {
         ValidatorFactory validatorFactory = Validation.buildDefaultValidatorFactory();
         validator = validatorFactory.getValidator();
-        this.customerService = new CustomerService();
+        this.userService = new UserService();
         this.familyLinkService = new FamilyLinkService();
         this.fidelityRankService = new FidelityRankService();
     }
@@ -46,7 +46,7 @@ public class RegisterCustomerServlet extends HttpServlet {
         request.setAttribute("countries", countries);
 
 
-        request.getRequestDispatcher("register-customer.jsp").forward(request, response);
+        request.getRequestDispatcher("user-register.jsp").forward(request, response);
 
     }
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -62,7 +62,7 @@ public class RegisterCustomerServlet extends HttpServlet {
 
         Country country = Country.getCountryByNameOrAbbreviation(countryName);
 
-        Customer customer = new Customer(lastname,firstname,email,password,confirmPassword, country);
+        User customer = new User(lastname,firstname,email,password,confirmPassword, country);
         customer.setFamilyLink(this.familyLinkService.getFamilyLinkByLabel(FamilyLinkLabel.NO_FAMILY));
         customer.setRegistrationDate(Calendar.getInstance());
 
@@ -71,7 +71,7 @@ public class RegisterCustomerServlet extends HttpServlet {
         List<String> errorsMessage = new ArrayList<String>();
 
         // Vérifier que l'email n'est pas déjà présent
-        if (this.customerService.getCustomerByEmail(customer.getEmail()).size() != 0){
+        if (this.userService.getCustomerByEmail(customer.getEmail()).size() != 0){
             errorsMessage.add("This email is already used");
         }
 
@@ -81,11 +81,11 @@ public class RegisterCustomerServlet extends HttpServlet {
         }
 
         // Validation des erreurs Hibernate
-        Set<ConstraintViolation<Customer>> errors = this.validator.validate(customer);
+        Set<ConstraintViolation<User>> errors = this.validator.validate(customer);
 
         if (errors.isEmpty() && errorsMessage.isEmpty()){
             // Si ok on enregistre
-            this.customerService.registerCustomer(customer);
+            this.userService.registerCustomer(customer);
 
             // On redirige vers l'appli spring (page de login)
             response.sendRedirect("http://localhost:8083/login?registersuccess");
@@ -94,7 +94,7 @@ public class RegisterCustomerServlet extends HttpServlet {
             request.setAttribute("errorsHibernate", errors);
             request.setAttribute("errors", errorsMessage);
 
-            request.getRequestDispatcher("register-customer.jsp").forward(request, response);
+            request.getRequestDispatcher("user-register.jsp").forward(request, response);
         }
 
     }

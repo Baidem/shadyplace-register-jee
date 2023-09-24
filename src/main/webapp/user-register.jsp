@@ -4,10 +4,11 @@
 
 <html>
 <head>
-    <title>Business case register customer</title>
+    <title>Shadyplace register</title>
 </head>
 <body>
-<h1>Create a customer account</h1>
+<h1>Shadyplace</h1>
+<h2>Create a user account</h2>
 
 <form method="post">
     <div>
@@ -64,7 +65,7 @@
         </c:if>
     </div>
 
-    <a href="http://localhost:8083/login">J'ai déjà un compte</a>
+    <a href="http://localhost:8083/login">I already have an accounte</a>
 
 
 </form>
