@@ -14,6 +14,7 @@ public class FidelityRank {
     private long id;
     @Column(unique = true, length = 1, nullable = false)
     @NotBlank(message = "Fidelity rank label cannot be blank.")
+    @NotNull(message = "FidelityRank must be defined")
     private String label;
     @Column(columnDefinition = "float(5,2)", name = "discount_price", nullable = false)
     @PositiveOrZero(message = "Fidelity rank discount price cannot be negative")

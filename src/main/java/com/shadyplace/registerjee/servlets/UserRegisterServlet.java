@@ -41,14 +41,13 @@ public class UserRegisterServlet extends HttpServlet {
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        // liste des pays
+        // list of countries
         List<Country> countries = Country.getAllDestinationCountries();
         request.setAttribute("countries", countries);
 
-
         request.getRequestDispatcher("user-register.jsp").forward(request, response);
-
     }
+
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Country> countries = Country.getAllDestinationCountries();
         request.setAttribute("countries", countries);

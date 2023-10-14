@@ -1,0 +1,43 @@
+body {
+    background: linear-gradient(to bottom, #f5e9c5, #d4a55f);
+    color : #201800;
+}
+.index {
+    height: 99vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+footer {
+    padding-top: 1rem;
+    padding-bottom: 10rem;
+}
+
+.page {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+a {
+    text-decoration: none;
+    color : #201800;
+}
+
+.bg-carte{
+    /*background-color: #F2DCA2 !important;*/
+    background: linear-gradient(to bottom, #F2DCA2, #eabe6d) !important;
+
+}
+
+.bg-carte-light{
+    background: linear-gradient(to bottom, #f5e9c5, #d7b98b);
+    /*background: #f5e9c5 !important;*/
+}
+
+.bg-bluesky {
+    background: linear-gradient(to bottom, #0077b6, #0099e5) !important;
+    position: relative;
+}

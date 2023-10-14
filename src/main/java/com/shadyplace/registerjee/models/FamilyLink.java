@@ -18,7 +18,6 @@ public class FamilyLink {
     private FamilyLinkLabel label;
     @Column(name = "discount_rate", columnDefinition = "float(2,2)",nullable = false)
     @PositiveOrZero(message = "Family link discount rate cannot be negative.")
-    @NotNull(message = "Family link discount rate cannot be null.")
     private double discountRate;
 
     public FamilyLink() {
