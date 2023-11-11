@@ -13,7 +13,7 @@ public class FidelityRankService {
         Session session = sessionFactory.getCurrentSession();
         Transaction transaction = session.beginTransaction();
 
-        String param = label.toString();
+        String param = label;
         FidelityRank fidelityRank = session.createQuery(
                 "FROM FidelityRank f WHERE f.label = :param", FidelityRank.class
         ).setParameter("param", param).getSingleResult();
@@ -23,5 +23,4 @@ public class FidelityRankService {
 
         return fidelityRank;
     }
-
 }
