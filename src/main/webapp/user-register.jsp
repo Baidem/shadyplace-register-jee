@@ -42,7 +42,6 @@
                             <div class="mb-3">
                                 <label class="form-label">Country of residence</label>
                                 <select name="country-name" class="form-select">
-                                    <option value=""></option>
                                     <c:forEach items="${countries}" var="country">
                                         <option value="${country.name}">${country.name}</option>
                                     </c:forEach>
