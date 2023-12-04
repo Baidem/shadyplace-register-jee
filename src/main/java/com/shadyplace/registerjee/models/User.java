@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import org.hibernate.validator.constraints.Length;
 
 import java.util.ArrayList;
@@ -24,7 +25,11 @@ public class User {
     private String email;
     @Column(name = "password", nullable = false)
     @NotBlank(message = "User's password cannot be blank.")
-    private String password; // TODO REGEX PASSWORD
+    @Pattern(
+        regexp = "^(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$",
+        message = "The password must contain at least 8 characters, with at least one capital letter, one number and one special character."
+    )
+    private String password;
 
     @Column(length = 50, nullable = false)
     @Length(max = 50, message = "The user's first name must be no more than 50 characters long.")
