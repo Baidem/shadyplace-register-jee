@@ -8,23 +8,24 @@
     <%@include file="parts/links-css.jsp"%>
 
 </head>
-<body>
+<body class="bg-elegantgray text-light">
 
-<div class="container-md pt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
+<div class="container">
+    <div class="row justify-content-center mt-2">
+        <div class="col-lg-5 bg-bluesky rounded-3 p-3 shadow">
 
-            <form method="post" class="bg-bluesky rounded-3 p-3 shadow">
-                <h1 class="card-title text-center">
-                    <img style="max-height:60px" src="images/logo-sunny-parasol-60px.png">
-                    Shadyplace
-                </h1>
-                <h2 class="card-subtitle text-center mb-3">Create a user account</h2>
+            <form method="post" class="">
+                <div class="col-12 border-bottom mb-2">
+                    <h1 class="card-title text-center fs-3">
+                        <img style="max-height:40px" src="images/logo-sunny-parasol-60px.png">
+                        Shadyplace
+                    </h1>
+                    <h2 class="card-subtitle text-center mb-2 fs-4">Create your account</h2>
+                </div>
 
-                <div class="row justify-content-center">
-                    <div class="col-lg-8">
+                    <div class="col-12">
                         <div class="">
-                            <div class="mb-3">
+                            <div class= mb-3">
                                 <label for="firstname" class="form-label">Firstname</label>
                                 <input id="firstname" type="text" placeholder="Firstname" name="firstname" class="form-control shadow-sm">
                             </div>
@@ -41,7 +42,7 @@
 
                             <div class="mb-3">
                                 <label class="form-label">Country of residence</label>
-                                <select name="country-name" class="form-select">
+                                <select name="country-name" class="form-select shadow-sm">
                                     <c:forEach items="${countries}" var="country">
                                         <option value="${country.name}">${country.name}</option>
                                     </c:forEach>
@@ -49,15 +50,19 @@
                             </div>
                             <div class="mb-3">
                                 <label for="password" class="form-label">Password</label>
-                                <input id="password" type="text" placeholder="Password" name="password" class="form-control">
+                                <input id="password" type="password" placeholder="Password" name="password" class="form-control shadow-sm">
                             </div>
 
                             <div class="mb-3">
                                 <label for="confirm_password" class="form-label">Confirm password</label>
-                                <input id="confirm_password" type="text" placeholder="Confirm password" name="confirm_password" class="form-control">
+                                <input id="confirm_password" type="password" placeholder="Confirm password" name="confirm_password" class="form-control shadow-sm">
                             </div>
 
-                            <input type="submit" class="btn btn-success mb-3">
+                            <div class="row justify-content-center gap-2">
+                                <a href="http://localhost:8083/login" class="col-auto btn btn-secondary shadow-sm">I have an account</a>
+
+                                <button type="submit" class="col-auto btn btn-success shadow-sm">Submit new account</button>
+                            </div>
 
                             <div class="text-center">
                                 <c:if test="${errorsHibernate.size() != 0}">
@@ -76,10 +81,8 @@
                                 </c:if>
                             </div>
 
-                            <a href="http://localhost:8083/login" class="card-link">I already have an account</a>
                         </div>
                     </div>
-                </div>
             </form>
         </div>
     </div>
