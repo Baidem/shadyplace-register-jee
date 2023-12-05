@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public enum Country {
+    FRANCE("France", "FR"),
     AFGHANISTAN("Afghanistan", "AF"),
     ALBANIA("Albania", "AL"),
     ALGERIA("Algeria", "DZ"),
@@ -31,7 +32,6 @@ public enum Country {
     EGYPT("Egypt", "EG"),
     ESTONIA("Estonia", "EE"),
     FINLAND("Finland", "FI"),
-    FRANCE("France", "FR"),
     GERMANY("Germany", "DE"),
     GREECE("Greece", "GR"),
     HONG_KONG("Hong Kong", "HK"),
