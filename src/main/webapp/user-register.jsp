@@ -58,27 +58,28 @@
                                 <input id="confirm_password" type="password" placeholder="Confirm password" name="confirm_password" class="form-control shadow-sm">
                             </div>
 
+
+                            <div class="row my-1">
+                                <div class="col-auto">
+                                    <c:if test="${errorsHibernate.size() != 0}">
+                                            <c:forEach items="${errorsHibernate}" var="error">
+                                                <div class="text-light">${error.message}</div>
+                                            </c:forEach>
+                                    </c:if>
+                                    <c:if test="${errors.size() != 0}">
+                                        <div class="text-light text-center">
+                                            <c:forEach items="${errors}" var="error">
+                                                <li class="list-group-item list-group-item-danger">${error}</li>
+                                            </c:forEach>
+                                        </div>
+                                    </c:if>
+                                </div>
+                            </div>
+
                             <div class="row justify-content-center gap-2">
                                 <a href="http://localhost:8083/login" class="col-auto btn btn-secondary shadow-sm">I have an account</a>
 
                                 <button type="submit" class="col-auto btn btn-success shadow-sm">Submit new account</button>
-                            </div>
-
-                            <div class="text-center">
-                                <c:if test="${errorsHibernate.size() != 0}">
-                                    <ol class="text-danger text-center">
-                                        <c:forEach items="${errorsHibernate}" var="error">
-                                            <li>${error.message}</li>
-                                        </c:forEach>
-                                    </ol>
-                                </c:if>
-                                <c:if test="${errors.size() != 0}">
-                                    <ol class="text-danger text-center">
-                                        <c:forEach items="${errors}" var="error">
-                                            <li>${error}</li>
-                                        </c:forEach>
-                                    </ol>
-                                </c:if>
                             </div>
 
                         </div>
