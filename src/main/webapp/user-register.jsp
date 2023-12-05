@@ -8,63 +8,58 @@
     <%@include file="parts/links-css.jsp"%>
 
 </head>
-<body class="bg-elegantgray text-light">
+<body class="bg-elegantgray d-flex align-items-center justify-content-center">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-auto mx-1">
+                <div class="card bg-bluesky shadow" style="width: 28rem;">
+                    <div class="card-body ">
+                        <div class="text-center text-light border-bottom border-light pb-2 mb-3">
+                            <h1 class="card-title fs-3">
+                                <img style="max-height:40px" src="images/logo-sunny-parasol-60px.png">
+                                Shadyplace
+                            </h1>
+                            <h2 class="card-subtitle mb-3 fs-4">
+                                Create your account
+                            </h2>
+                        </div>
 
-<div class="container">
-    <div class="row justify-content-center mt-2">
-        <div class="col-lg-5 bg-bluesky rounded-3 p-3 shadow">
-
-            <form method="post" class="">
-                <div class="col-12 border-bottom mb-2">
-                    <h1 class="card-title text-center fs-3">
-                        <img style="max-height:40px" src="images/logo-sunny-parasol-60px.png">
-                        Shadyplace
-                    </h1>
-                    <h2 class="card-subtitle text-center mb-2 fs-4">Create your account</h2>
-                </div>
-
-                    <div class="col-12">
-                        <div class="">
-                            <div class= mb-3">
-                                <label for="firstname" class="form-label">Firstname</label>
-                                <input id="firstname" type="text" placeholder="Firstname" name="firstname" class="form-control shadow-sm">
+                        <form method="post" class="m-0">
+                            <div class="form-floating mb-3">
+                                <input name="firstname" type="text" class="form-control" id="firstname" placeholder="first name">
+                                <label for="firstname">First name</label>
                             </div>
-
-                            <div class="mb-3">
-                                <label for="lastname" class="form-label">Lastname</label>
-                                <input id="lastname" type="text" placeholder="Lastname" name="lastname" class="form-control shadow-sm">
+                            <div class="form-floating  mb-3">
+                                <input name="lastname" type="text" class="form-control" id="lastname" placeholder="last name">
+                                <label for="lastname">Last name</label>
                             </div>
-
-                            <div class="mb-3">
-                                <label for="email" class="form-label">Email</label>
-                                <input id="email" type="text" placeholder="Email" name="email" class="form-control shadow-sm">
+                            <div class="form-floating  mb-3">
+                                <input name="email" type="email" class="form-control" id="email" placeholder="name@example.com">
+                                <label for="email">Email</label>
                             </div>
-
-                            <div class="mb-3">
-                                <label class="form-label">Country of residence</label>
-                                <select name="country-name" class="form-select shadow-sm">
+                            <div class="form-floating mb-3">
+                                <select name="country-name" class="form-select" id="floatingSelect" aria-label="Country of residence">
                                     <c:forEach items="${countries}" var="country">
                                         <option value="${country.name}">${country.name}</option>
                                     </c:forEach>
                                 </select>
+                                <label for="floatingSelect">Country of residence</label>
                             </div>
-                            <div class="mb-3">
-                                <label for="password" class="form-label">Password</label>
-                                <input id="password" type="password" placeholder="Password" name="password" class="form-control shadow-sm">
+                            <div class="form-floating mb-3">
+                                <input name="password" type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                                <label for="floatingPassword">Password</label>
                             </div>
-
-                            <div class="mb-3">
-                                <label for="confirm_password" class="form-label">Confirm password</label>
-                                <input id="confirm_password" type="password" placeholder="Confirm password" name="confirm_password" class="form-control shadow-sm">
+                            <div class="form-floating mb-3">
+                                <input name="confirm_password" type="password" class="form-control" id="floatingConfirm" placeholder="Confirm password">
+                                <label for="floatingConfirm">Confirm password</label>
                             </div>
-
 
                             <div class="row my-1">
                                 <div class="col-auto">
                                     <c:if test="${errorsHibernate.size() != 0}">
-                                            <c:forEach items="${errorsHibernate}" var="error">
-                                                <div class="text-light">${error.message}</div>
-                                            </c:forEach>
+                                        <c:forEach items="${errorsHibernate}" var="error">
+                                            <div class="text-light">${error.message}</div>
+                                        </c:forEach>
                                     </c:if>
                                     <c:if test="${errors.size() != 0}">
                                         <div class="text-light text-center">
@@ -81,13 +76,12 @@
 
                                 <button type="submit" class="col-auto btn btn-success shadow-sm">Submit new account</button>
                             </div>
-
-                        </div>
+                        </form>
                     </div>
-            </form>
+                </div>
+            </div>
         </div>
     </div>
-</div>
 
 <%@include file="parts/scripts-js.jsp"%>
 
