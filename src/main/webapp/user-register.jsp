@@ -16,8 +16,7 @@
                     <div class="card-body ">
                         <div class="text-center text-light border-bottom border-light pb-2 mb-3">
                             <h1 class="card-title fs-3">
-                                <img style="max-height:40px" src="images/logo-sunny-parasol-60px.png">
-                                Shadyplace
+                                <img style="max-height:60px" src="images/logo-main-light.png">
                             </h1>
                             <h2 class="card-subtitle mb-3 fs-4">
                                 Create your account
